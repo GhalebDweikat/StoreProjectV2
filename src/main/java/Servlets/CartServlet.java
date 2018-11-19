@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 @WebServlet("/cart")
@@ -27,12 +26,10 @@ public class CartServlet extends HttpServlet {
         {
             Product prod = ProductController.getInstance().getProduct(Integer.parseInt(params.get("add")[0]));
             UserController.getInstance().addProductToCart(user, prod);
-            //req.setAttribute("cart", user.getCart().getProducts().size());
             resp.getWriter().write(user.getCart().getProducts().size());
         }
         else if(params.containsKey("remove")) {
             UserController.getInstance().removeProductFromCart(user, Integer.parseInt(params.get("add")[0]));
-            //req.setAttribute("cart", user.getCart().getProducts().size());
             resp.getWriter().write(user.getCart().getProducts().size());
         }
         else
