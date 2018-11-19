@@ -63,7 +63,7 @@ public class ProductDAO {
         }
         return products;
     }
-    public void writeListToFile(ArrayList<Product> productList){
+    public void writeListToFile(List<Product> productList){
         StringBuilder sb = new StringBuilder();
         for (Product product:productList
         ) {

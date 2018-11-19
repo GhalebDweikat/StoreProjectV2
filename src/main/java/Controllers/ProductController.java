@@ -4,6 +4,7 @@ import DataAccess.ProductDAO;
 import Model.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductController {
 
@@ -16,20 +17,18 @@ public class ProductController {
         return instance;
     }
 
-    private ProductController(){};
-
-
+    private ProductController(){}
 
     public void addProduct(int productID, String productName, String productDescription, double price){
-        ArrayList<Product> productList = ProductDAO.getInstance().getProducts();
+        List<Product> productList = ProductDAO.getInstance().getProducts();
         productList.add(new Product(productID,productName,productDescription,price));
         ProductDAO.getInstance().writeListToFile(productList);
     }
-    public ArrayList<Product> getAllProducts(){
+    public List<Product> getAllProducts(){
         return ProductDAO.getInstance().getProducts();
     }
     public Product getProduct(String name){
-        ArrayList<Product> products = ProductDAO.getInstance().getProducts();
+        List<Product> products = ProductDAO.getInstance().getProducts();
         for (Product prod:products
         ) {
             if (prod.getProductName().equalsIgnoreCase(name)){
@@ -38,8 +37,9 @@ public class ProductController {
         }
         return null;
     }
+
     public Product getProduct(int productID){
-        ArrayList<Product> products = ProductDAO.getInstance().getProducts();
+        List<Product> products = ProductDAO.getInstance().getProducts();
         for (Product prod:products
         ) {
             if (prod.getProductId()== productID){

@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         String rememberme = req.getParameter("remember");
 
         if (userController.isValidLogin(username,password)) {
-            req.getSession().setAttribute("user", username);
+            req.getSession().setAttribute("user", userController.getUser(username));
             if ("yes".equals(rememberme)) {
                 Cookie c = new Cookie("user", username);
                 c.setMaxAge(7 * 24 * 60 * 60);
