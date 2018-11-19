@@ -23,4 +23,14 @@ public class ShoppingCart {
         products.add(p);
 
     }
+
+    public void removeProduct(int id){
+        Product p = null;
+        for (Product prd: products
+             ) {
+            if(prd.getProductId() == id) p = prd;
+        }
+        if(p != null)
+            products.remove(p);
+    }
 }
