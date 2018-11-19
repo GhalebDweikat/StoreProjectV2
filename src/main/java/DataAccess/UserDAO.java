@@ -5,15 +5,19 @@ import Model.User;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
 
     List<User> userList;
-    String inputFileName = "C:\\Users\\KevinJustice\\IdeaProjects\\Project\\StoreProjectV2\\src\\main\\java\\DataAccess\\users.txt";
+    String inputFileName = "";
 
     private UserDAO() {
+        try {
+            inputFileName = UserDAO.class.getClassLoader().getResource("users.txt").toURI().getPath();
+        }catch(Exception ex){System.err.println(ex.getMessage());}
         userList = getUsersFromFile(inputFileName);
     }
 

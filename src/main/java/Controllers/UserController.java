@@ -5,13 +5,20 @@ import Model.User;
 
 public class UserController {
 
-        public boolean isValidLogin(String username, String password) {
+    public boolean isValidLogin(String username, String password) {
         UserDAO userDAO = UserDAO.getInstance();
         User user = userDAO.getUser(username);
+        if(user == null)
+            return false;
         if (user.getPassword().equals(password)) {
             return true;
         } else {
             return false;
         }
+    }
+    public User getUser(String userName){
+        UserDAO userDAO = UserDAO.getInstance();
+        User user = userDAO.getUser(userName);
+        return user;
     }
 }

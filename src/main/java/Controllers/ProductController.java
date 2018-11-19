@@ -27,15 +27,9 @@ public class ProductController {
     public List<Product> getAllProducts(){
         return ProductDAO.getInstance().getProducts();
     }
-    public Product getProduct(String name){
-        List<Product> products = ProductDAO.getInstance().getProducts();
-        for (Product prod:products
-        ) {
-            if (prod.getProductName().equalsIgnoreCase(name)){
-                return prod;
-            }
-        }
-        return null;
+    public List<Product> getProduct(String name){
+        List<Product> products = ProductDAO.getInstance().getProducts(name);
+        return products;
     }
 
     public Product getProduct(int productID){

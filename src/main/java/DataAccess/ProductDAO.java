@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ProductDAO {
     List<Product> productList;
-    String inputFileName = "products.txt";
+    String inputFileName = "../src/main/resources/products.txt";
     static ProductDAO instance;
     private ProductDAO(){ productList = getProductsList();}
 
@@ -52,7 +52,7 @@ public class ProductDAO {
         double price;
         int id;
         String[] temp = {};
-        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\KevinJustice\\IdeaProjects\\Project\\StoreProjectV2\\src\\main\\java\\DataAccess\\products.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader(inputFileName))){
             while ((line = br.readLine()) != null) {
                 temp = line.split("%%");
                 Product product = new Product(Integer.parseInt(temp[0]),temp[1],temp[2],Double.parseDouble(temp[3]));
@@ -73,7 +73,7 @@ public class ProductDAO {
             sb.append(product.getPrice());
             sb.append("line.separator");
         }
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\KevinJustice\\IdeaProjects\\Project\\StoreProjectV2\\src\\main\\java\\DataAccess\\products.txt"))){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(inputFileName))){
             bw.write(sb.toString());
         }catch (IOException e){
             System.out.println(e.getMessage());
