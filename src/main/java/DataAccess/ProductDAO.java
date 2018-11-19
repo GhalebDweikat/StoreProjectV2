@@ -2,9 +2,7 @@ package DataAccess;
 
 import Model.Product;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +28,7 @@ public class ProductDAO {
         double price;
         int id;
         String[] temp = {};
-        try(BufferedReader br = new BufferedReader(new FileReader("DataAccess/products.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\KevinJustice\\IdeaProjects\\Project\\StoreProjectV2\\src\\main\\java\\DataAccess\\products.txt"))){
             while ((line = br.readLine()) != null) {
                 temp = line.split("%%");
                 Product product = new Product(Integer.parseInt(temp[0]),temp[1],temp[2],Double.parseDouble(temp[3]));
@@ -41,5 +39,20 @@ public class ProductDAO {
         }
         return products;
     }
-
+    public void writeListToFile(ArrayList<Product> productList){
+        StringBuilder sb = new StringBuilder();
+        for (Product product:productList
+        ) {
+            sb.append(product.getProductId()+"%%");
+            sb.append(product.getProductName()+"%%");
+            sb.append(product.getProductDescription()+"%%");
+            sb.append(product.getPrice());
+            sb.append("line.separator");
+        }
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\KevinJustice\\IdeaProjects\\Project\\StoreProjectV2\\src\\main\\java\\DataAccess\\products.txt"))){
+            bw.write(sb.toString());
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

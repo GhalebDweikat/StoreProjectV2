@@ -12,8 +12,8 @@
   </head>
   <body>
   <div class="container">
-    <h1 class="title">Welcome To The HomePage</h1>
-      <div><button>Go To Login Page</button> </div>
+    <h1 class="title">Welcome To The Index Page</h1>
+      <div><button id="indexpagebtn">Go To Login Page</button> </div>
   </div>
   </body>
 </html>

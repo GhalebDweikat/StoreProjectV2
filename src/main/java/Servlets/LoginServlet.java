@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
                 resp.addCookie(c);
 
             }
-            req.getRequestDispatcher("Views/Products.jsp").forward(req,resp);
+            resp.sendRedirect("/home");
         }  else {
             req.getSession().setAttribute("err_msg", "Username and/or password invalid.");
             req.getRequestDispatcher("Views/Login.jsp").forward(req,resp);

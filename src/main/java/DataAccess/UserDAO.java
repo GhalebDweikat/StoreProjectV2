@@ -11,7 +11,7 @@ import java.util.List;
 public class UserDAO {
 
     List<User> userList;
-    String inputFileName = "users.txt";
+    String inputFileName = "C:\\Users\\KevinJustice\\IdeaProjects\\Project\\StoreProjectV2\\src\\main\\java\\DataAccess\\users.txt";
 
     private UserDAO() {
         userList = getUsersFromFile(inputFileName);
