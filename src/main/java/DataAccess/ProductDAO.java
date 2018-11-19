@@ -21,9 +21,33 @@ public class ProductDAO {
         return instance;
     }
 
-    public ArrayList<Product> getProducts(){
-        return new ArrayList<>(productList);
+    public List<Product> getProducts(){
+        return productList;
     }
+
+    public Product getProduct(int id)
+    {
+        for (Product p:productList
+             ) {
+            if(p.getProductId() == id)
+                return p;
+        }
+
+        return null;
+    }
+
+    public List<Product> getProducts(String name){
+        List<Product> result = new ArrayList<>();
+
+        for (Product p:productList
+        ) {
+            if(p.getProductName().startsWith(name))
+                result.add(p);
+        }
+
+        return result;
+    }
+
     private List<Product> getProductsList() {
         List<Product> products = new ArrayList<>();
         String name, description,line;
