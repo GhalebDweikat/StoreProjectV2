@@ -1,5 +1,6 @@
 package DataAccess;
 
+import Model.Product;
 import Model.User;
 
 import java.io.BufferedReader;
@@ -82,5 +83,15 @@ public class UserDAO {
         catch (Exception ex){
 
         }
+    }
+
+    public void addProductToCart(User u, Product p)
+    {
+        u.getCart().addProduct(p);
+    }
+
+    public void removeProductFromCart(User u, int id)
+    {
+        u.getCart().removeProduct(id);
     }
 }
