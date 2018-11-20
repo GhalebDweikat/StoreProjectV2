@@ -27,8 +27,8 @@
         <div class="row">
             <c:forEach items="${products}" var="product">
                 <div class="col">
-                    <c:out value="${product.name}"/>
-                    <c:out value="${product.price}"/>
+                    <span><c:out value="${product.name}"/></span>
+                    <span><c:out value="${product.price}"/></span>
                 </div>
             </c:forEach>
         </div>

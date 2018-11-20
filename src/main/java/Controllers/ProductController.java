@@ -36,7 +36,7 @@ public class ProductController {
         List<Product> products = ProductDAO.getInstance().getProducts();
         for (Product prod:products
         ) {
-            if (prod.getProductId()== productID){
+            if (prod.getId()== productID){
                 return prod;
             }
         }

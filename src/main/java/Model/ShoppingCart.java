@@ -28,7 +28,7 @@ public class ShoppingCart {
         Product p = null;
         for (Product prd: products
              ) {
-            if(prd.getProductId() == id) p = prd;
+            if(prd.getId() == id) p = prd;
         }
         if(p != null)
             products.remove(p);

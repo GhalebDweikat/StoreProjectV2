@@ -8,9 +8,15 @@ import java.util.List;
 
 public class ProductDAO {
     List<Product> productList;
-    String inputFileName = "../src/main/resources/products.txt";
+    String inputFileName;
     static ProductDAO instance;
-    private ProductDAO(){ productList = getProductsList();}
+    private ProductDAO(){
+        try {
+            inputFileName = UserDAO.class.getClassLoader().getResource("products.txt").toURI().getPath();
+        }catch(Exception ex){
+            System.err.println(ex.getMessage());
+        }
+        productList = getProductsList();}
 
     public static ProductDAO getInstance(){
         if(instance == null) {
@@ -27,7 +33,7 @@ public class ProductDAO {
     {
         for (Product p:productList
              ) {
-            if(p.getProductId() == id)
+            if(p.getId() == id)
                 return p;
         }
 
@@ -39,7 +45,7 @@ public class ProductDAO {
 
         for (Product p:productList
         ) {
-            if(p.getProductName().startsWith(name))
+            if(p.getName().startsWith(name))
                 result.add(p);
         }
 
@@ -48,9 +54,7 @@ public class ProductDAO {
 
     private List<Product> getProductsList() {
         List<Product> products = new ArrayList<>();
-        String name, description,line;
-        double price;
-        int id;
+        String line;
         String[] temp = {};
         try(BufferedReader br = new BufferedReader(new FileReader(inputFileName))){
             while ((line = br.readLine()) != null) {
@@ -67,9 +71,9 @@ public class ProductDAO {
         StringBuilder sb = new StringBuilder();
         for (Product product:productList
         ) {
-            sb.append(product.getProductId()+"%%");
-            sb.append(product.getProductName()+"%%");
-            sb.append(product.getProductDescription()+"%%");
+            sb.append(product.getId()+"%%");
+            sb.append(product.getName()+"%%");
+            sb.append(product.getDescription()+"%%");
             sb.append(product.getPrice());
             sb.append("line.separator");
         }

@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserController userController = new UserController();
+        UserController userController = UserController.getInstance();
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String rememberme = req.getParameter("remember");

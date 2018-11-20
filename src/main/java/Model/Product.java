@@ -13,27 +13,27 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getProductId() {
+    public int getId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setId(int productId) {
         this.productId = productId;
     }
 
-    public String getProductName() {
+    public String getName() {
         return productName;
     }
 
-    public void setProductName(String productName) {
+    public void setName(String productName) {
         this.productName = productName;
     }
 
-    public String getProductDescription() {
+    public String getDescription() {
         return productDescription;
     }
 
-    public void setProductDescription(String productDescription) {
+    public void setDescription(String productDescription) {
         this.productDescription = productDescription;
     }
 
