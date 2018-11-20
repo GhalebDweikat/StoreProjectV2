@@ -10,11 +10,13 @@
 <html>
 <head>
     <title>Shopping Cart</title>
+    <script src="/Scripts/homepage_scripts.js"></script>
 </head>
 <body>
     <h1>Shopping Cart</h1>
     <c:forEach var="item" items="${products}" >
-        <p>${item.productName} : ${item.price} <button id="${item.productId}">Remove From Cart</button></p>
+        <p><c:out value="${item.name} : ${item.price}"/></p>
+        <button id=${item.id}>Remove From Cart</button>
     </c:forEach>
 </body>
 </html>

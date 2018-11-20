@@ -1,8 +1,10 @@
 $(function () {
     $(".addtocart").click(addProductToCart);
     $(".prodsummary").click(ajaxProdDetails);
+    $("#viewcartbtn").click(ajaxViewCart);
 });
 function addProductToCart(e) {
+    e.stopImmediatePropagation();
     let id = e.target.id;
     $.get("/cart", {"add":id}).done(alertSuccess);
 }
@@ -28,4 +30,11 @@ function displayProduct(data) {
 function backToAllProducts(data) {
         $(".container").remove();
         $("body").html(data);
+}
+function ajaxViewCart() {
+    $.get("/cart").done(viewCart);
+}
+function viewCart(data) {
+    $(".prodsummary,.proddetails").remove();
+    $(".products").append($("<div>", {"class": "col proddetails"}).html(data));
 }
