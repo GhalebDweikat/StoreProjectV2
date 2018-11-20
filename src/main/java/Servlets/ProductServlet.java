@@ -31,6 +31,7 @@ public class ProductServlet extends HttpServlet {
         else if(params.containsKey("id"))
         {
             String id = params.get("id")[0];
+            System.out.println(id);
             Product product = ProductController.getInstance().getProduct(Integer.parseInt(id));
             req.setAttribute("selectedProduct", product);
             req.getRequestDispatcher("Views/Product.jsp").forward(req,resp);
@@ -41,6 +42,7 @@ public class ProductServlet extends HttpServlet {
             List<Product> products = ProductController.getInstance().getProduct(names[0]);
             //todo
             // Convert Product to jackson write to output so that JQuery can convert to object and use it to display
+
         }
     }
 
