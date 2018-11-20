@@ -29,7 +29,7 @@ public class CartServlet extends HttpServlet {
             resp.getWriter().write(user.getCart().getProducts().size());
         }
         else if(params.containsKey("remove")) {
-            UserController.getInstance().removeProductFromCart(user, Integer.parseInt(params.get("add")[0]));
+            UserController.getInstance().removeProductFromCart(user, Integer.parseInt(params.get("remove")[0]));
             resp.getWriter().write(user.getCart().getProducts().size());
         }
         else

@@ -2,6 +2,7 @@ $(function () {
     $(".addtocart").click(addProductToCart);
     $(".prodsummary").click(ajaxProdDetails);
     $("#viewcartbtn").click(ajaxViewCart);
+    $(".removebtn").click(removeProduct);
 });
 function addProductToCart(e) {
     e.stopImmediatePropagation();
@@ -35,6 +36,20 @@ function ajaxViewCart() {
     $.get("/cart").done(viewCart);
 }
 function viewCart(data) {
-    $(".prodsummary,.proddetails").remove();
+    $(".prodsummary,.proddetails,.backbtn").remove();
     $(".products").append($("<div>", {"class": "col proddetails"}).html(data));
+    $(".products").append($("<button>",
+        {"click": function () {
+                $.get("/home").done(backToAllProducts);
+            },
+            "text":"Go Back",
+            "class":"backbtn"
+        }));
+}
+function removeProduct(e) {
+    $.get("/cart", {"remove":e.target.id}).done(removeSuccess);
+}
+function removeSuccess() {
+    alert("Product Successfully Removed!");
+    ajaxViewCart();
 }
