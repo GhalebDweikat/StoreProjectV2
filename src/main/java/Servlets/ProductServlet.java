@@ -31,7 +31,6 @@ public class ProductServlet extends HttpServlet {
         else if(params.containsKey("id"))
         {
             String id = params.get("id")[0];
-            System.out.println(id);
             Product product = ProductController.getInstance().getProduct(Integer.parseInt(id));
             req.setAttribute("selectedProduct", product);
             req.getRequestDispatcher("Views/Product.jsp").forward(req,resp);

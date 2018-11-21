@@ -3,6 +3,7 @@ $(function () {
     $(".prodsummary").click(ajaxProdDetails);
     $("#viewcartbtn").click(ajaxViewCart);
     $(".removebtn").click(removeProduct);
+    $(".checkoutbtn").click(ajaxViewCheckout);
 });
 function addProductToCart(e) {
     e.stopImmediatePropagation();
@@ -14,7 +15,6 @@ function alertSuccess() {
 }
 function ajaxProdDetails(e) {
     let id = e.target.id.substring(4,e.target.id.length);
-    alert(id);
     $.get("/product", {"id":id}).done(displayProduct);
 }
 function displayProduct(data) {
@@ -24,7 +24,8 @@ function displayProduct(data) {
         {"click": function () {
                 $.get("/home").done(backToAllProducts);
             },
-            "text":"Go Back"
+            "text":"Go Back",
+            "class":"backbtn"
     }));
 }
 
@@ -39,17 +40,36 @@ function viewCart(data) {
     $(".prodsummary,.proddetails,.backbtn").remove();
     $(".products").append($("<div>", {"class": "col proddetails"}).html(data));
     $(".products").append($("<button>",
-        {"click": function () {
+        {
+            "click": function () {
                 $.get("/home").done(backToAllProducts);
             },
-            "text":"Go Back",
-            "class":"backbtn"
+            "text": "Go Back",
+            "class": "backbtn"
         }));
+
 }
 function removeProduct(e) {
     $.get("/cart", {"remove":e.target.id}).done(removeSuccess);
+    e.stopImmediatePropagation();
 }
 function removeSuccess() {
     alert("Product Successfully Removed!");
     ajaxViewCart();
+}
+function ajaxViewCheckout(e) {
+    $.get("/checkout",{"user":e.target.id}).done(displayCheckoutView);
+    e.stopImmediatePropagation();
+}
+function displayCheckoutView(data) {
+    $(".proddetails,.backbtn").remove();
+    $(".products").append($("<div>", {"class": "col proddetails"}).html(data));
+    $(".products").append($("<button>",
+        {
+            "click": function () {
+                $.get("/home").done(backToAllProducts);
+            },
+            "text": "Go Back",
+            "class": "backbtn"
+        }));
 }

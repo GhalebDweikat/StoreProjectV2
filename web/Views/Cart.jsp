@@ -18,5 +18,6 @@
         <p><c:out value="${item.name} : ${item.price}"/></p>
         <button class="removebtn" id=${item.id} >Remove From Cart</button>
     </c:forEach>
+    <button class="checkoutbtn" id=${user.username}>Checkout</button>
 </body>
 </html>
