@@ -3,4 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>Servlets.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+        <url-pattern>/Views/Cart.jsp</url-pattern>
+        <url-pattern>/Views/Checkout.jsp</url-pattern>
+        <url-pattern>/Views/Homepage.jsp</url-pattern>
+        <url-pattern>/Views/Product.jsp</url-pattern>
+        <url-pattern>/cart</url-pattern>
+        <url-pattern>/checkout</url-pattern>
+        <url-pattern>/product</url-pattern>
+        <url-pattern>/logout</url-pattern>
+        <url-pattern>/home</url-pattern>
+    </filter-mapping>
 </web-app>
