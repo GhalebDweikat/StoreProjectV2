@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="/Scripts/homepage_scripts.js"></script>
 </head>
 <body>
     <h1>Checkout Time</h1>
@@ -35,5 +36,6 @@
             </tr>
         </tbody>
     </table>
+    <button class="paybtn" id="${user.username}">Pay Now</button>
 </body>
 </html>

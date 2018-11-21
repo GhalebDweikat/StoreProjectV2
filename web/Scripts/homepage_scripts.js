@@ -4,6 +4,8 @@ $(function () {
     $("#viewcartbtn").click(ajaxViewCart);
     $(".removebtn").click(removeProduct);
     $(".checkoutbtn").click(ajaxViewCheckout);
+    $(".paybtn").click(payNow);
+    $(".logoutbtn").click(logout);
 });
 function addProductToCart(e) {
     e.stopImmediatePropagation();
@@ -72,4 +74,16 @@ function displayCheckoutView(data) {
             "text": "Go Back",
             "class": "backbtn"
         }));
+}
+function payNow(e) {
+    alert("You Bought Stuff YAY!");
+    $.get("/checkout", {"user":e.target.id,"pay":"yes"}).done(backToAllProducts);
+    e.stopImmediatePropagation();
+}
+function logout(e) {
+    $.get("/logout").done(viewLogin);
+    e.stopImmediatePropagation();
+}
+function viewLogin(data) {
+    $("body").html(data);
 }

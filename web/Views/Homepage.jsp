@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="title">Welcome To The HomePage</h1>
+                <h1 class="title">Welcome To The HomePage <button class="logoutbtn">Logout</button> </h1>
                 <h2>${user.username} Check Out All The Cool Stuff To Buy!</h2>
                 <button id="viewcartbtn">View Cart</button>
             </div>

@@ -33,4 +33,7 @@ public class ShoppingCart {
         if(p != null)
             products.remove(p);
     }
+    public void removeAllProducts(){
+        products.clear();
+    }
 }

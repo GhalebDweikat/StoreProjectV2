@@ -23,13 +23,14 @@
             <form action="login" method="post">
                 <div class="form-group">
                     <label>Enter User Name: </label>
-                    <input id="userbox" name="username" placeholder="abc123" required pattern="[A-Za-z0-9\-@$!_]+">
+                    <input id="userbox" name="username" placeholder="abc123" value="${cookie.user.value}" required pattern="[A-Za-z0-9\-@$!_]+">
                 </div>
                 <div class="form-group">
                     <label>Enter Password: </label>
                     <input id="passwordbox" name="password" type="password" required pattern="[a-zA-z0-9]+">
                 </div>
-                    <label>Remember Me:<input id="remember" name="remember" value="yes" type="checkbox" /></label>
+                    <label>Remember Me:<input id="remember" name="remember" value="yes" type="checkbox"
+                                              <c:if test="${cookie.containsKey('user')}">checked</c:if>/></label>
                 <button class="btn btn-success" id="loginbutton">Log In</button>
             </form>
             <span id="errormsg">${err_msg}</span>
