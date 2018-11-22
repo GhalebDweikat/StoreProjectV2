@@ -6,17 +6,19 @@ $(function () {
     $(".checkoutbtn").click(ajaxViewCheckout);
     $(".paybtn").click(payNow);
     $(".logoutbtn").click(logout);
+
+    $("#search").autocomplete({ source: "product", minLength: 1});
 });
 function addProductToCart(e) {
     e.stopImmediatePropagation();
-    let id = e.target.id;
+    var id = e.target.id;
     $.get("/cart", {"add":id}).done(alertSuccess);
 }
 function alertSuccess() {
     alert("Product Successfully Added");
 }
 function ajaxProdDetails(e) {
-    let id = e.target.id.substring(4,e.target.id.length);
+    var id = e.target.id.substring(4,e.target.id.length);
     $.get("/product", {"id":id}).done(displayProduct);
 }
 function displayProduct(data) {
