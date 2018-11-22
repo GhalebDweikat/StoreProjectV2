@@ -25,7 +25,7 @@
                 <button id="viewcartbtn">View Cart</button>
             </div>
         </div>
-        <div class="row search">Search: <input id="search" name="search" /> <button id="doSearch">Search</button></div>
+        <div class="row search"><form method="post" action="products">Search: <input id="search" name="name" /> <button type="submit" id="doSearch">Search</button></form></div>
         <div class="row products">
             <c:forEach items="${products}" var="product">
                 <div  class="prodsummary col">

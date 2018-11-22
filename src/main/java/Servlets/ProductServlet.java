@@ -3,7 +3,6 @@ package Servlets;
 
 import Controllers.ProductController;
 import Model.Product;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +16,7 @@ import java.util.stream.Collectors;
 
 @WebServlet("/product")
 public class ProductServlet extends HttpServlet {
-    ObjectMapper om = new ObjectMapper();
+    //ObjectMapper om = new ObjectMapper();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, String[]> params = req.getParameterMap();
@@ -50,7 +49,13 @@ public class ProductServlet extends HttpServlet {
 
             List<Product> products = ProductController.getInstance().getProduct(term);
             List<String> productNames = products.stream().map(p -> p.getName()).collect(Collectors.toList());
-            String json = om.writeValueAsString(productNames);
+            String json = "{[";
+            for (String s:productNames
+                 ) {
+                json += s + ",";
+            }
+            json = json.substring(0, json.length() -1);
+            json += "]}";
             resp.getWriter().write(json);
         }
     }
