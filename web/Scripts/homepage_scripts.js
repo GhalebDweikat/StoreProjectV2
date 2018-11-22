@@ -6,6 +6,7 @@ $(function () {
     $(".checkoutbtn").click(ajaxViewCheckout);
     $(".paybtn").click(payNow);
     $(".logoutbtn").click(logout);
+    $("#search").autocomplete({ source: "product", minLength: 1});
 });
 function addProductToCart(e) {
     e.stopImmediatePropagation();

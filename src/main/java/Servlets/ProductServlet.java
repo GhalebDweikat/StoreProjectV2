@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet("/product")
 public class ProductServlet extends HttpServlet {
@@ -35,13 +36,27 @@ public class ProductServlet extends HttpServlet {
             req.setAttribute("selectedProduct", product);
             req.getRequestDispatcher("Views/Product.jsp").forward(req,resp);
         }
-        else if(params.containsKey("nameAjax"))
+        else if(params.containsKey("term"))
         {
-            String[] names = params.get("name");
-            List<Product> products = ProductController.getInstance().getProduct(names[0]);
-            //todo
-            // Convert Product to jackson write to output so that JQuery can convert to object and use it to display
+            String[] names = params.get("term");
 
+
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+
+            String term = req.getParameter("term");
+
+
+            List<Product> products = ProductController.getInstance().getProduct(term);
+            List<String> productNames = products.stream().map(p -> p.getName()).collect(Collectors.toList());
+            String json = "{[";
+            for (String s:productNames
+            ) {
+                json += "\"" + s + "\",";
+            }
+            json = json.substring(0, json.length() -1);
+            json += "]}";
+            resp.getWriter().write(json);
         }
     }
 

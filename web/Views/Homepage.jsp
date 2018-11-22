@@ -24,6 +24,11 @@
                 <h2>${user.username} Check Out All The Cool Stuff To Buy!</h2>
                 <button id="viewcartbtn">View Cart</button>
             </div>
+            <div class="row search">
+                <form method="post" action="home">Search: <input id="search" name="name" />
+                    <button type="submit" id="doSearch">Search</button>
+                </form>
+            </div>
         </div>
         <div class="row products">
             <c:forEach items="${products}" var="product">
