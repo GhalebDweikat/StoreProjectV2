@@ -52,7 +52,7 @@ public class ProductServlet extends HttpServlet {
             String json = "{[";
             for (String s:productNames
                  ) {
-                json += s + ",";
+                json += "\"" + s + "\",";
             }
             json = json.substring(0, json.length() -1);
             json += "]}";
