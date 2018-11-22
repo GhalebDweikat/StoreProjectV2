@@ -33,6 +33,7 @@
                 <h2>${user.username} Check Out All The Cool Stuff To Buy! </h2>
             </div>
             <div class="colLast">
+                <span id="cartCount"></span>
                 <button id="viewcartbtn" class="btn btn-primary">View Cart</button>
             </div>
         </div>
@@ -42,10 +43,11 @@
                     <button type="submit" id="doSearch" class="btn btn-primary" >Search</button>
                 </form>
             </div>
+            <div class="colLast"><button class="btn-success btn" id="addProduct">Add Products</button></div>
         </div>
         <div class="row products">
             <c:forEach items="${products}" var="product">
-                <div  class="prodsummary col">
+                <div  class="prodsummary">
                     <span class="prodsum" id="prod${product.id}"><c:out value="${product.name}  ${product.price}"/></span>
                     <button id="${product.id}" class="addtocart btn btn-success">Add To Cart</button>
                 </div>

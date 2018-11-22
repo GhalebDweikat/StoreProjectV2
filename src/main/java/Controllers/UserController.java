@@ -43,4 +43,9 @@ public class UserController {
         User user = userDAO.getUser(userName);
         return user;
     }
+
+    public void addUser(String username, String password)
+    {
+        UserDAO.getInstance().addUser(username, password);
+    }
 }

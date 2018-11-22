@@ -11,6 +11,7 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/index.jsp</url-pattern>
         <url-pattern>/Views/Cart.jsp</url-pattern>
+        <url-pattern>/Views/addproduct.jsp</url-pattern>
         <url-pattern>/Views/Checkout.jsp</url-pattern>
         <url-pattern>/Views/Homepage.jsp</url-pattern>
         <url-pattern>/Views/Product.jsp</url-pattern>
@@ -19,5 +20,6 @@
         <url-pattern>/product</url-pattern>
         <url-pattern>/logout</url-pattern>
         <url-pattern>/home</url-pattern>
+        <url-pattern>/addproduct</url-pattern>
     </filter-mapping>
 </web-app>

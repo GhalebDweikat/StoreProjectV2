@@ -19,7 +19,8 @@ public class ProductController {
 
     private ProductController(){}
 
-    public void addProduct(int productID, String productName, String productDescription, double price){
+    public void addProduct(String productName, String productDescription, double price){
+        int productID = ProductDAO.getInstance().generateId();
         List<Product> productList = ProductDAO.getInstance().getProducts();
         productList.add(new Product(productID,productName,productDescription,price));
         ProductDAO.getInstance().writeListToFile(productList);

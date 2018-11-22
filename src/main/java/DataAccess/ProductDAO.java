@@ -75,12 +75,16 @@ public class ProductDAO {
             sb.append(product.getName()+"%%");
             sb.append(product.getDescription()+"%%");
             sb.append(product.getPrice());
-            sb.append("line.separator");
+            sb.append(System.getProperty("line.separator"));
         }
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(inputFileName))){
             bw.write(sb.toString());
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public int generateId(){
+        return productList.size();
     }
 }

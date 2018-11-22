@@ -33,7 +33,9 @@
                     <label>Remember Me:<input id="remember" name="remember" value="yes" type="checkbox"
                                               <c:if test="${cookie.containsKey('user')}">checked</c:if>/></label>
                 <button class="btn btn-success" id="loginbutton">Log In</button>
+
             </form>
+            <a href="/signup">Sign Up!</a>
             <span id="errormsg">${err_msg}</span>
 
         </div>

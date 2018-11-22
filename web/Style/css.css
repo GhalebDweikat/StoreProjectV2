@@ -1,6 +1,11 @@
 *{
     
 }
+.prodsummary{
+    padding: 10px;
+    float: left;
+    margin: 10px;
+}
 body {
     background-color: #FAFAD2;
 }

@@ -50,7 +50,8 @@ public class UserDAO {
         return users;
     }
 
-    public void addUser(String userId, String username, String password){
+    public void addUser(String username, String password){
+        String userId = generateId() + "";
         userList.add(new User(userId, username, password));
         refreshFile(inputFileName);// not very efficient, rewriting the whole file after every write, but this allows for update user in the future to change password. This can be moved to
                                     // a thread instead and also when the object is being destroyed.
@@ -93,5 +94,9 @@ public class UserDAO {
     public void removeProductFromCart(User u, int id)
     {
         u.getCart().removeProduct(id);
+    }
+
+    public int generateId(){
+        return userList.size();
     }
 }

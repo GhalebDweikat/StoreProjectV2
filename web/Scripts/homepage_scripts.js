@@ -6,6 +6,7 @@ $(function () {
     $(".checkoutbtn").click(ajaxViewCheckout);
     $(".paybtn").click(payNow);
     $(".logoutbtn").click(logout);
+    $("#addProduct").click(addProduct);
     $("#search").autocomplete({ source: "product", minLength: 1});
 });
 function addProductToCart(e) {
@@ -13,8 +14,10 @@ function addProductToCart(e) {
     let id = e.target.id;
     $.get("/cart", {"add":id}).done(alertSuccess);
 }
-function alertSuccess() {
+function alertSuccess(data) {
     alert("Product Successfully Added");
+    //alert(data);
+    $("#cartCount").text(data);
 }
 function ajaxProdDetails(e) {
     let id = e.target.id.substring(4,e.target.id.length);
@@ -82,8 +85,12 @@ function payNow(e) {
     e.stopImmediatePropagation();
 }
 function logout(e) {
-    $.get("/logout").done(viewLogin);
-    e.stopImmediatePropagation();
+    //$.get("/logout").done(viewLogin);
+    //e.stopImmediatePropagation();
+    window.location.replace("/logout");
+}
+function addProduct(e) {
+    window.location.replace("/addproduct");
 }
 function viewLogin(data) {
     $("body").html(data);

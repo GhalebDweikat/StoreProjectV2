@@ -26,7 +26,7 @@ public class CartServlet extends HttpServlet {
         {
             Product prod = ProductController.getInstance().getProduct(Integer.parseInt(params.get("add")[0]));
             UserController.getInstance().addProductToCart(user, prod);
-            resp.getWriter().write(user.getCart().getProducts().size());
+            resp.getWriter().println(user.getCart().getProducts().size());
         }
         else if(params.containsKey("remove")) {
             UserController.getInstance().removeProductFromCart(user, Integer.parseInt(params.get("remove")[0]));
