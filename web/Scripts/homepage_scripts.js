@@ -23,13 +23,14 @@ function ajaxProdDetails(e) {
 function displayProduct(data) {
     $(".prodsummary").remove();
     $(".products").append($("<div>", {"class": "col proddetails"}).html(data));
-    $(".products").append($("<button>",
-        {"click": function () {
+    $(".products").append($("<div>", {"class": "colLast"}).append($("<button>",
+        {
+            "click": function () {
                 $.get("/home").done(backToAllProducts);
             },
-            "text":"Go Back",
-            "class":"backbtn"
-    }));
+            "text": "Go Back",
+            "class": "backbtn btn btn-primary"
+        })));
 }
 
 function backToAllProducts(data) {
@@ -42,15 +43,14 @@ function ajaxViewCart() {
 function viewCart(data) {
     $(".prodsummary,.proddetails,.backbtn").remove();
     $(".products").append($("<div>", {"class": "col proddetails"}).html(data));
-    $(".products").append($("<button>",
+    $(".products").append($("<div>", {"class": "colLast"}).append($("<button>",
         {
             "click": function () {
                 $.get("/home").done(backToAllProducts);
             },
             "text": "Go Back",
-            "class": "backbtn"
-        }));
-
+            "class": "backbtn btn btn-primary"
+        })));
 }
 function removeProduct(e) {
     $.get("/cart", {"remove":e.target.id}).done(removeSuccess);
@@ -67,14 +67,14 @@ function ajaxViewCheckout(e) {
 function displayCheckoutView(data) {
     $(".proddetails,.backbtn").remove();
     $(".products").append($("<div>", {"class": "col proddetails"}).html(data));
-    $(".products").append($("<button>",
+    $(".products").append($("<div>", {"class": "colLast"}).append($("<button>",
         {
             "click": function () {
                 $.get("/home").done(backToAllProducts);
             },
             "text": "Go Back",
-            "class": "backbtn"
-        }));
+            "class": "backbtn btn btn-primary"
+        })));
 }
 function payNow(e) {
     alert("You Bought Stuff YAY!");

@@ -16,7 +16,7 @@
     <div class="prodsummary">
         <h1><c:out value="Product Name: ${selectedProduct.name}     Price: $${selectedProduct.price} USD"/></h1>
         <h2><c:out value="Product Details: ${selectedProduct.description}"/></h2>
-        <button id=${selectedProduct.id} class="addtocart">Add To Cart</button>
+        <button id="${selectedProduct.id}" class="addtocart btn btn-success">Add To Cart</button>
     </div>
 </body>
 </html>

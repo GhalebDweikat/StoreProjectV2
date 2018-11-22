@@ -1,3 +1,16 @@
 *{
     
 }
+body {
+    background-color: #FAFAD2;
+}
+.hometitle {
+    position: relative;
+}
+.logoutbtn {
+    float: right;
+}
+.prodsum:hover {
+    background-color: #90EE90;
+    opacity: .5
+}

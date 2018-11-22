@@ -14,10 +14,11 @@
 </head>
 <body>
     <h1>Checkout Time</h1>
-    <table id="tbl_products">
+    <table id="tbl_products table-bordered">
         <thead>
         <tr>
             <th>Name</th>
+            <th></th>
             <th>Price</th>
         </tr>
         </thead>
@@ -27,15 +28,17 @@
             <c:set var="total" scope="page" value="${total + product.price}"/>
             <tr>
                 <td><c:out value="${product.name}" /></td>
-                <td><c:out value="${product.price}" /></td>
+                <td></td>
+                <td>$ <c:out value="${product.price}" /></td>
             </tr>
         </c:forEach>
-            <tr>
-                <td>Total Price:$ ${total} USD</td>
+            <tr class="table-success">
+                <td>Total Price:</td>
                 <td></td>
+                <td>$ ${total} USD</td>
             </tr>
         </tbody>
     </table>
-    <button class="paybtn" id="${user.username}">Pay Now</button>
+    <button class="paybtn btn btn-success" id="${user.username}">Pay Now</button>
 </body>
 </html>

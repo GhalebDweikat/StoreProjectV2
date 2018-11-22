@@ -16,8 +16,8 @@
     <h1>Shopping Cart</h1>
     <c:forEach var="item" items="${products}" >
         <p><c:out value="${item.name} : ${item.price}"/></p>
-        <button class="removebtn" id=${item.id} >Remove From Cart</button>
+        <button class="removebtn btn btn-danger" id=${item.id} >Remove From Cart</button>
     </c:forEach>
-    <button class="checkoutbtn" id=${user.username}>Checkout</button>
+    <button class="checkoutbtn btn btn-warning btn-lg btn-block" id=${user.username}>Checkout</button>
 </body>
 </html>
